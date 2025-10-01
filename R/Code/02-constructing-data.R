@@ -1,12 +1,17 @@
 # Reproducible Research Fundamentals 
 # 02. Data construction
 
+# install.packages("tidyverse")
+# install.packages("labelled")
+
 library(tidyverse)
+library(labelled)
+library(haven)
 # RRF - 2024 - Construction
 
 #### Read data ----
 
-data_path <- "ADD-YOUR-PATH"
+data_path <- "C:/Users/wb618037/OneDrive - WBG/Desktop/DataWork/DataWork/Data"
 
 # Preliminary - Load data
 # Load HH data
@@ -26,25 +31,31 @@ secondary_data <- read_dta(file.path(data_path, "Intermediate/TZA_amenity_tidy.d
 # 7 Total medical facilities - secondary amenities
 
 # Exercise 2: Standardize conversion values ----
-acre_conv <- ....
-usd <- ....
+acre_conv <- 2.47
+usd <- 0.00037
 
 # Data construction: HH 
 
 # Area in acres (Convert units for farming area)
 hh_data <- hh_data %>%
-    mutate(...... = case_when(
-      ...... == 1 ~ ......,               # If unit is acres
-      ...... == 2 ~ ...... * ......     # Convert hectare to acres
+    mutate(area_acre = case_when(
+      ar_unit == 2 ~ ar_farm ,              # If unit is acres
+      ar_unit == 3 ~ ar_farm*acre_conv     # Convert hectare to acres
     )) %>%
-    mutate(...... = replace_na(......, 0)) %>% 
-    set_variable_labels(...... = "Area farmed in acres")
+    mutate(area_acre = replace_na(area_acre, 0)) %>% 
+    set_variable_labels(area_acre = "Area farmed in acres")
+
+
+glimpse(hh_data)
+hh_data$ar_unit %>% unique()
+
+
 
 # Consumption in USD (for food and nonfood)
 hh_data <- hh_data %>%
-    mutate(across(c(......, ......), 
+    mutate(across(c(food_cons, nonfood_cons), 
                   ~ .x * usd, 
-                  .names = "{.col}......"))
+                  .names = "{.col}_usd"))
 
 # Exercise 3: Handle outliers ----
 
@@ -71,7 +82,7 @@ winsor_function <- function(dataset, var, min = 0.00, max = 0.95){
 }
 
 # Winsorize selected variables in the dataset
-win_vars <- c("......", "......", "......")
+win_vars <- c("area_acre", "food_cons_usd", "nonfood_cons_usd")
 
 # Apply the custom winsor_function to each variable in win_vars
 for (var in win_vars) {
@@ -88,50 +99,53 @@ hh_data <- hh_data %>%
 
 # Collapse HH-member data to HH level
 hh_mem_collapsed <- mem_data %>%
-    group_by(......) %>%
+    group_by(hhid) %>%
     summarise(
-      ...... = max(......, na.rm = TRUE),  # Any member was sick
-      ...... = max(......, na.rm = TRUE),  # Any member can read/write
+      sick = max(sick, na.rm = TRUE),  # Any member was sick
+      read = max(read, na.rm = TRUE),  # Any member can read/write
         # If all values of days_sick are NA, return NA; otherwise, calculate mean
-      ...... = if_else(all(is.na(......)), NA_real_, mean(......, na.rm = TRUE)),
+      days_sick = if_else(all(is.na(days_sick)), NA_real_, mean(days_sick, na.rm = TRUE)),
         # If all values of treat_cost are NA, return NA; otherwise, calculate sum in USD
-      ...... = if_else(all(is.na(......)), NA_real_, sum(......, na.rm = TRUE) * usd)
+      treat_cost_usd = if_else(all(is.na(treat_cost)), NA_real_, sum(treat_cost, na.rm = TRUE) * usd)
     ) %>%
     ungroup() %>%
     # Replace missing treat_cost_usd with the average of non-missing values
-    mutate(...... = if_else(is.na(......), 
-                            mean(......, na.rm = TRUE), 
-                            ......)) %>%
+    mutate(treat_cost_usd = if_else(is.na(treat_cost_usd), 
+                            mean(treat_cost_usd, na.rm = TRUE), 
+                            treat_cost_usd)) %>%
     # Apply labels to the variables
     set_variable_labels(
-      ...... = "Any member can read/write",
-      ...... = "Any member was sick in the last 4 weeks",
-      ...... = "Average sick days",
-      ...... = "Total cost of treatment (USD)"
+      read = "Any member can read/write",
+      sick = "Any member was sick in the last 4 weeks",
+      days_sick = "Average sick days",
+      treat_cost_usd = "Total cost of treatment (USD)"
     )
 
 # Exercise 4.2: Data construction: Secondary data ----
 
 # Calculate the total number of medical facilities
 secondary_data <- secondary_data %>%
-    mutate(...... = rowSums(select(., ......, ......), 
-                               na.rm = TRUE)) %>% 
-    rename(...... = ......)
+    mutate(n_medical = rowSums(select(., n_clinic, n_hospital), 
+                               na.rm = TRUE))
 
 # Apply label to the new column
-var_label(secondary_data$......) <- "No. of medical facilities"
+var_label(secondary_data$n_medical) <- "No. of medical facilities"
 
 # Exercise 5: Merge HH and HH-member data ----
 
 # Merge HH and HH-member datasets
 final_hh_data <- hh_data %>%
-    left_join(hh_mem_collapsed, by = "......")
+    left_join(hh_mem_collapsed, by = "hhid")
 
 # Load treatment status and merge
 treat_status <- read_dta(file.path(data_path, "Raw/treat_status.dta"))
 
 final_hh_data <- final_hh_data %>%
-    left_join(treat_status, by = "......") 
+    left_join(treat_status, by = "vid") 
+
+# #Excercise 6: Subset the variables
+# final_hh_data <- final_hh_data %>%
+#   select(vid, hhid, read, sick, days_sick, treat_cost_usd, treatment)
 
 # Exercise 6: Save final dataset ----
 
