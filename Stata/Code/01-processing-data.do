@@ -127,7 +127,7 @@
 		// create a template first, then edit the template and change the syntax to 
 		// iecodebook apply
 		iecodebook  template	using ///
-								"${outputs}/hh_mem_codebook.xlsx"
+								"${outputs}/hh_mem_codebook.xlsx", replace
 								
 		isid hhid member, sort 						
 		

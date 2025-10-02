@@ -1,7 +1,6 @@
 /*******************************************************************************
 							Template Main do-file							   
 *******************************************************************************/
-
 	* Set version
 	version 17
 
@@ -11,13 +10,12 @@
 	
 	* Add file paths to DataWork folder and the Github folder for RRF2024
 	if "`c(username)'" == "wb618037" {
-        global onedrive "C:\Users\wb618037\OneDrive - WBG\Desktop\DataWork\DataWork"
 		global github 	"C:\Users\wb618037\Github\GitHub-rrf-25-VD1"
     }
 	
 	
 	* Set globals for sub-folders 
-	global data 	"${onedrive}/Data"
+	global data 	"${github}/Stata/DataWork/DataWork/Data"
 	global code 	"${github}/Stata/Code"
 	global outputs 	"${github}/Stata/Outputs"
 	
