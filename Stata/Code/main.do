@@ -1,28 +1,25 @@
 /*******************************************************************************
 							Template Main do-file							   
 *******************************************************************************/
-
 	* Set version
-	*version ???
+	version 17
 
 	* Set project global(s)	
 	// User: you 
 	display "`c(username)'" 	//Check username and copy to set project globals by user
 	
 	* Add file paths to DataWork folder and the Github folder for RRF2024
-	if "`c(username)'" == "" {
-        *global onedrive "???/DataWork"
-		global github 	"???/GitHub-rrf-24"
+	if "`c(username)'" == "wb618037" {
+		global github 	"C:\Users\wb618037\Github\GitHub-rrf-25-VD1"
     }
 	
 	
 	* Set globals for sub-folders 
-	global data 	"${onedrive}/Data"
+	global data 	"${github}/Stata/DataWork/DataWork/Data"
 	global code 	"${github}/Stata/Code"
 	global outputs 	"${github}/Stata/Outputs"
 	
-	sysdir set PLUS "???"
-
+	sysdir set PLUS "${code}/ado"
 
 	* Install packages 
 	local user_commands	ietoolkit iefieldkit winsor sumstats estout keeporder grc1leg2 //Add required user-written commands
@@ -36,7 +33,9 @@
 
 	* Run do files 
 	* Switch to 0/1 to not-run/run do-files 
-	if (0) do "${code}/01-processing-data.do"
+	if (1) do "${code}/01-processing-data.do"
+	if (1) do "${code}/02-constructing-data.do"
+	if (1) do "${code}/03-analyzing-data.do"
 
 
 * End of do-file!	
