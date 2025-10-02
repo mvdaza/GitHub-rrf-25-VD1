@@ -1,0 +1,51 @@
+This report was created by the Stata command iesave (version 7.3). Read more about this command and the purpose of this report on https://dimewiki.worldbank.org/iesave
+
+Number of observations:,1756
+Number of variables:,32
+ID variable(s):,hhid
+.dta version used:,14
+Data signature:,1756:32(85547):1557434276:1075305247
+Last saved by:,User info withheld, see option userinfo in command iesave.
+Last saved at:,15:34:01 2 Oct 2025
+
+Variable type: Continuous
+Name,Label,Type,Complete obs,Mean,Std Dev,p0,p25,p50,p75,p100
+ar_farm,"How much land do you farm? AREA",double,1618, 1.321, 1.062, .125, 1, 1.214, 2, 32.38
+duration,"Duration of the interview (minutes)",int,1756, 106.4, 32.75, 27, 84, 102, 123, 293
+enid,"Enumerator ID",int,1756, 716.4, 129.6, 420, 619, 805, 818, 828
+food_cons,"Annual food consumption value",double,1756, 639729, 513233, 5096, 261950, 517660, 858000, 4903600
+hh_size,"Number of members in the household",byte,1756, 3.982, 2.606, 1, 2, 3, 5, 17
+hhid,"Household ID",int,1756, 5176, 2528, 1001, 3103, 5102, 7163, 9922
+livestock_before,"How many livestock did the HH own 12 months ago?",int,1756, 6.641, 10.23, 0, 0, 3, 10, 150
+livestock_now,"How many livestock does the HH own today?",int,1756, 2.994, 6.551, 0, 0, 0, 4, 160
+n_adult,"Number of Adults (18-59 years)",byte,1756, 1.064, 1.18, 0, 0, 1, 2, 8
+n_child_17,"Number of children between 6 to 17 years of age",byte,1756, 1.187, 1.418, 0, 0, 1, 2, 10
+n_child_5,"Number of childeren below or equal to 5 years of age",byte,1756, .4687, .7965, 0, 0, 0, 1, 5
+n_elder,"Number of Elderly (> 60 years)",byte,1756, 1.263, .7193, 0, 1, 1, 2, 4
+nonfood_cons,"Annual non-food consumption value",long,1756, 146958, 251140, 0, 23485, 69933, 166650, 4108400
+vid,"anonymous village ID",byte,1756, 41.45, 23.86, 1, 21, 41.5, 62.5, 82
+
+Variable type: Date or date-time
+Name,Label,Format,Complete obs,Unique values,Mean,Std Dev,Min,Median,Max
+submissiondate,"Date of interview",%td,1756,93,03mar2009, 38.74,20dec2008,27feb2009,07may2009
+
+Variable type: Categorical
+Name,Label,Value label,Complete obs,Number of levels,Number of unlabeled levels,Top count
+ar_unit,"What is the total area you farm? AREA UNIT",ar_unit,1618,2,0,Acre:1204 Hectare:414
+assoc,"Is there a parent association in this village?",yesno,1466,2,0,No:1269 Yes:197
+crop,"Primary crop grown on this owned/rented/borrowed land",df_CROP,1618,24,0,Maize:327 Sorghum:238 Cassava:183 Paddy:168 Other pulses:161
+crop_damage,"Experienced crop damage",yesno,1756,2,0,Yes:911 No:845
+crop_prp,"Purpose of the primary crop",df_CROPPURPOSE,1507,3,0,Mainly for Food:1172 Mainly for Sale:247 Food and sale (about 50/50):88
+drought_flood,"Experienced drought/flood",yesno,1756,2,0,Yes:1037 No:719
+enegry,"What is the main source of energy used for lighting?",df_LENERGY,1756,7,0,Kerosine/paraffin:1318 Firewood:391 Battery:30 Main electricity:11 Other (specify):3
+farm,"Does anyone in this household conduct farming activities?",yesno,1756,2,0,Yes:1618 No:138
+female_head,"Is the household head female?",yesno,1756,2,0,No:1072 Yes:684
+floor,"What material is the floor of this house made of?",df_FLOOR,1756,2,0,Mud/earth:1651 Concrete/Cement:105
+health,"Is there a village health commitee in this village?",yesno,1668,2,0,Yes:1001 No:667
+rel_head,"What is the religion of the HH head?",df_RELIGION,1756,6,0,Muslim:1065 Protestant:299 Catholic:235 Other Christian:90 Traditionalist:57
+roof,"What material is the roof of this house made of?",df_ROOF,1756,3,0,Thatch:809 Iron sheets:616 Mud:331
+trust_lead,"In general, can you trust leaders of your community?",yesno,1748,2,0,Yes:1406 No:342
+trust_mem,"In general, can you trust members of your community?",yesno,1746,2,0,Yes:971 No:775
+walls,"What material are the walls of this house made of?",df_WALLS,1756,3,0,Mud/Mud brick:1522 Wood/Bamboo:153 Concrete/Cement:81
+water,"What is the HH's main source of drinking water throughout the year?",df_WATER,1756,11,0,Uncovered Well:444 River, lake, pond:419 Pipe bourne water treated:336 Piped bourne water untreated:208 Bore hole/hand pump:123
+

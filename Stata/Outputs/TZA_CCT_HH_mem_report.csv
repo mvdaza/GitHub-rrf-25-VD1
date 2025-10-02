@@ -1,0 +1,30 @@
+This report was created by the Stata command iesave (version 7.3). Read more about this command and the purpose of this report on https://dimewiki.worldbank.org/iesave
+
+Number of observations:,3221
+Number of variables:,14
+ID variable(s):,hhid member
+.dta version used:,14
+Data signature:,3221:14(96561):4000742507:2630337543
+Last saved by:,User info withheld, see option userinfo in command iesave.
+Last saved at:,15:34:04 2 Oct 2025
+
+Variable type: Continuous
+Name,Label,Type,Complete obs,Mean,Std Dev,p0,p25,p50,p75,p100
+age,"",int,3221, 43.22, 29.04, 0, 13, 49, 70, 110
+clinic_visit,"",int,3221, 2.706, 6.021, 0, 0, 1, 3, 182
+days_impact,"",int,2066, 28.64, 48.11, 0, 7, 14, 30, 365
+days_sick,"",byte,955, 10.86, 9.115, 1, 4, 7, 14, 28
+enid,"Enumerator ID",int,3221, 716.6, 129.5, 420, 619, 805, 818, 828
+hhid,"Household ID",int,3221, 5183, 2523, 1001, 3117, 5023, 7121, 9922
+member,"Question Number",byte,3221, 1.455, .498, 1, 1, 1, 2, 2
+treat_cost,"",long,751, 3558, 15893, -88, 140, 1000, 2200, 280000
+vid,"anonymous village ID",byte,3221, 41.36, 23.83, 1, 21, 41, 62, 82
+
+Variable type: Categorical
+Name,Label,Value label,Complete obs,Number of levels,Number of unlabeled levels,Top count
+gender,"",df_GENDER,3221,2,0,Female:1782 Male:1439
+ill_impact,"",yesno,3221,2,0,Yes:2066 No:1155
+read,"",yesno,3121,2,0,No:1938 Yes:1183
+sick,"",yesno,3221,2,0,No:2266 Yes:955
+treat_fin,"",df_TREATFINANCE,846,8,0,Own cash:507 Free treatment:199 Got assistance:108 Health insurance:18 Other (specify):8
+

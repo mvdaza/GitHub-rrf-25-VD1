@@ -1,0 +1,36 @@
+%%% Table created in Stata by command iebaltab
+%%% (https://github.com/worldbank/ietoolkit)
+%%% (https://dimewiki.worldbank.org/iebaltab)
+%%% The command was specified exactly like this: 
+%%% iebaltab hh_size n_child_5 n_elder read sick female_head livestock_now area_acre_w drought_flood crop_damage, grpvar(treatment) rowvarlabels format(%9.2f) savecsv("C:/Users/wb618037/Github/GitHub-rrf-25-VD1/Stata/Outputs/balance") savetex("C:/Users/wb618037/Github/GitHub-rrf-25-VD1/Stata/Outputs/balance") nonote addnote(" Significance: ***=.01, **=.05, *=.1") replace
+
+\begin{tabular}{@{\extracolsep{5pt}}lcccccc}
+\\[-1.8ex]\hline \hline \\[-1.8ex]
+ & \multicolumn{2}{c}{(1)}  & \multicolumn{2}{c}{(2)}  & \multicolumn{2}{c}{(1)-(2)} \\
+ & \multicolumn{2}{c}{Control}  & \multicolumn{2}{c}{Treatment}  & \multicolumn{2}{c}{Pairwise t-test}  \\
+Variable & N & Mean/(SE) & N & Mean/(SE) & N & Mean difference \\ \hline \\[-1.8ex] 
+Number of members in the household   & 877    & 3.99    & 879    & 3.98    & 1756    & 0.01   \\
+ &   & (0.09)  &   & (0.09)  &   &  \\ [1ex]
+Number of childeren below or equal to 5 years of age   & 877    & 0.47    & 879    & 0.47    & 1756    & -0.00   \\
+ &   & (0.03)  &   & (0.03)  &   &  \\ [1ex]
+Number of Elderly (> 60 years)   & 877    & 1.33    & 879    & 1.20    & 1756    & 0.13***   \\
+ &   & (0.02)  &   & (0.02)  &   &  \\ [1ex]
+Any member can read/write   & 877    & 0.55    & 878    & 0.53    & 1755    & 0.02   \\
+ &   & (0.02)  &   & (0.02)  &   &  \\ [1ex]
+Any member was sick in the last 4 weeks   & 877    & 0.44    & 879    & 0.45    & 1756    & -0.01   \\
+ &   & (0.02)  &   & (0.02)  &   &  \\ [1ex]
+Is the household head female?   & 877    & 0.41    & 879    & 0.37    & 1756    & 0.04   \\
+ &   & (0.02)  &   & (0.02)  &   &  \\ [1ex]
+How many livestock does the HH own today?   & 877    & 2.99    & 879    & 3.00    & 1756    & -0.01   \\
+ &   & (0.25)  &   & (0.19)  &   &  \\ [1ex]
+Area farmed in acres (Winsorized 0.05)   & 806    & 1.78    & 812    & 1.84    & 1618    & -0.07   \\
+ &   & (0.04)  &   & (0.05)  &   &  \\ [1ex]
+Experienced drought/flood   & 877    & 0.59    & 879    & 0.59    & 1756    & -0.01   \\
+ &   & (0.02)  &   & (0.02)  &   &  \\ [1ex]
+Experienced crop damage   & 877    & 0.48    & 879    & 0.56    & 1756    & -0.08***   \\
+ &   & (0.02)  &   & (0.02)  &   &  \\ [1ex]
+\hline \hline \\[-1.8ex]
+%%% This is the note. If it does not have the correct margins, use texnotewidth() option or change the number before '\textwidth' in line below to fit it to table size.
+\multicolumn{6}{@{} p{\textwidth}}{ Significance: ***=.01, **=.05, *=.1}
+
+\end{tabular}
